@@ -1,0 +1,7 @@
+file 'generatedAudio/1693860452-Мишка:-madirus.wav'
+file 'generatedAudio/1693860454-Я:-madirus.wav'
+file 'generatedAudio/1693860455-Я:-madirus.wav'
+file 'generatedAudio/1693860457-Я:-madirus.wav'
+file 'generatedAudio/1693860458-Мишка:-madirus.wav'
+file 'generatedAudio/1693860462-Мишка:-madirus.wav'
+file 'generatedAudio/1693860463-Мишка:-alexander.wav'

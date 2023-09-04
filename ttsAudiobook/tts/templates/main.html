@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/css/uikit.min.css"/>
+  <title>Text to Speech</title>
+</head>
+
+<style>
+    input, audio, button{
+        width:300px!important;
+        height: 50px!important;
+    }
+</style>
+
+<body>
+
+
+    <form class="uk-flex-column uk-felx-middle uk-flex-center uk-text-center" action="" method="post" style="height: 100%">
+        
+        <h1 class="uk-margin-large">Text to Speech</h1>
+    
+        <div style="margin: 100px">
+            <div class="uk-form-controls">
+                <label class="uk-form-label" for="form-stacked-text">Название произведения</label>
+                <br>
+                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Название произведения">
+            </div>
+            <br>
+            <div uk-form-custom="target: true">
+                <input class="uk-input" id="fileInput" name="textFile" type="file" aria-label="Custom controls" accept=".txt">
+                <input class="uk-input" type="text" placeholder="Выберите файл" aria-label="Custom controls" disabled>
+            </div>
+
+        </div>
+
+
+        <div style="margin: 100px">
+            <button type="submit" name="textUploadingBtn" id="convertBtn">Конвертировать в аудио</button>
+        </div>   
+
+    </form>
+
+    <div class="uk-flex-column uk-felx-middle uk-flex-center uk-text-center" style="margin: 100px">
+        <audio id="audioPlayback" name="audioFile" controls></audio>
+    </div> 
+
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/js/uikit.min.js"></script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/js/uikit-icons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+</body>
+</html>
