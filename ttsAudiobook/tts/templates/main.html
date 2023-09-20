@@ -1,54 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet"
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/css/uikit.min.css"/>
-  <title>Text to Speech</title>
+    <title>Text to Speech</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
-<style>
-    input, audio, button{
-        width:300px!important;
-        height: 50px!important;
-    }
-</style>
 
 <body>
 
 
-    <form class="uk-flex-column uk-felx-middle uk-flex-center uk-text-center" action="" method="post" style="height: 100%">
-        
-        <h1 class="uk-margin-large">Text to Speech</h1>
-    
-        <div style="margin: 100px">
-            <div class="uk-form-controls">
-                <label class="uk-form-label" for="form-stacked-text">Название произведения</label>
-                <br>
-                <input class="uk-input" id="form-stacked-text" type="text" placeholder="Название произведения">
-            </div>
-            <br>
-            <div uk-form-custom="target: true">
-                <input class="uk-input" id="fileInput" name="textFile" type="file" aria-label="Custom controls" accept=".txt">
-                <input class="uk-input" type="text" placeholder="Выберите файл" aria-label="Custom controls" disabled>
-            </div>
+<body style="pointer-events: auto;">
 
+    <div class="uk-flex uk-flex-wrap"
+        style="z-index: 1; position: fixed; top: 0; height: 100%; background-color: #252525; width: 15%; padding-bottom: 5%;">
+
+        <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center" style="width: 15%; position: fixed; top: 3%; left: 0; z-index: 1000; border: none">
+            <h1 style="margin: 0; color: white"> Amazon <br> <span style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave </span> </h1>
         </div>
 
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical uk-width-1">
+            
+            <li class="uk-active uk-text-center">
+                <h3 class=" uk-width-1 uk-text-center uk-margin-large-bottom"
+                    style="color: white; height: 50px; padding: 0;"> Available books </h3>
+            </li>
 
-        <div style="margin: 100px">
-            <button type="submit" name="textUploadingBtn" id="convertBtn">Конвертировать в аудио</button>
-        </div>   
+            <li class="uk-active uk-text-center Btn">
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
+                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
+            </li>
 
-    </form>
+            <li class="uk-active uk-text-center Btn">
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
+                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
+            </li>
 
-    <div class="uk-flex-column uk-felx-middle uk-flex-center uk-text-center" style="margin: 100px">
-        <audio id="audioPlayback" name="audioFile" controls></audio>
-    </div> 
+            <li class="uk-active uk-text-center Btn">
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
+                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
+            </li>
 
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/js/uikit.min.js"></script>
-  <script
-      src="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/js/uikit-icons.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+            
+            <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center Btn" style="width: 15%; position: fixed; bottom: 3%; left: 0; z-index: 1000; border: none">
+                <button class="uk-button uk-button-default uk-border-rounded"
+                style="background:  #969696; border: solid #969696 2px; color: white; width: 80%; height: 45px; padding: 0;" > settings </button>
+            </div>
+        </ul>
+    </div>
+
+    <div id="MainWindowContainer" style="width: 85%; margin-left: 15%">
+    </div>
+
+
 </body>
+
+
+
+<script>
+
+    $(document).ready(function() {
+        $('.Btn').on('click', function() {
+            console.log();
+            var xhr = new XMLHttpRequest();
+            var name = $(this).find('button').text().trim().replace(/ /g, '-');;
+            localStorage.book = name;
+
+            if (name !== 'settings') {
+                xhr.open('GET', `/books/${name}/`);
+            } else {
+                xhr.open('GET', '/settings/');
+            }
+
+            xhr.onload = function () {
+                $('#MainWindowContainer').html(xhr.response);
+            }
+            xhr.send();
+        });
+    });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit-icons.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </html>

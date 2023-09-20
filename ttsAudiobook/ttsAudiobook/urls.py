@@ -20,6 +20,6 @@ from tts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Mainpage),
-    path('tts/' views.text_to_speech),
-    
+    path('books/<name>', views.Books),
+    path('settings/', views.Settings),    
     ]

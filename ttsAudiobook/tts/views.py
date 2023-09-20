@@ -8,28 +8,30 @@ from django.views.decorators.csrf import csrf_exempt
 
 def Mainpage(request):
     content = {}
+    texts = Text.objects.all()
+    # for text in texts:
+        # if 
+    print(request.headers['Cookie'].replace('csrftoken=', ''))
     return render(request, 'main.html', content)
 
-def text_to_speech(request):
+def Books(request, pos):
+    folder_path = 'books'
+    files = os.listdir(folder_path)
 
-    # Get the text and name from the request
-    text = request.POST['text']
-    name = request.POST['name']
+    files.sort()
 
-    # Generate the audio file
-    audio = gTTS(text=text, lang="en", slow=False)
-    audio.save(f"{name}.mp3")
+    try:
+        pos = int(pos)
+    except ValueError:
+        pos = 0
 
-    # Redirect the user to the audio playback page
-    return HttpResponseRedirect(f"/audio/{name}")
+    pos = max(0, min(pos, len(files) - 1))
+    selected_file = files[pos]
+    file_path = os.path.join(folder_path, selected_file)
+    print(file_path)
+    return render(request, f'books/{file_path}.html', content)
 
-# Create a view to render the audio playback page
-def audio_playback(request, name):
-
-    # Get the audio file path
-    audio_file_path = f"{name}.mp3"
-
-    # Render the audio playback page
-    return render(request, 'audio_playback.html', {
-        'audio_file_path': audio_file_path
-    })
+def Settings(request):
+    content = {}
+    text = Text.objects.all()
+    return render(request, 'settings.html', content)
