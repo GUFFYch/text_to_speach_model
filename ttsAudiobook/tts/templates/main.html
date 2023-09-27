@@ -8,44 +8,69 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
+
 
 
 <body style="pointer-events: auto;">
+    
+    <div class="uk-flex uk-flex-right uk-flex-middle">
+        <button>icon</button>
+        <button>settings</button>
+    </div>
+    
+    <div class="uk-width-4-5" style="margin: 50px auto">
+        <h1 class="uk-text-center" style="margin: 30px auto;"> Amazon <span style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave </span> </h1> 
+       
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; center: true">
 
-    <div class="uk-flex uk-flex-wrap"
-        style="z-index: 1; position: fixed; top: 0; height: 100%; background-color: #252525; width: 15%; padding-bottom: 5%;">
-
-        <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center" style="width: 15%; position: fixed; top: 3%; left: 0; z-index: 1000; border: none">
-            <h1 style="margin: 0; color: white"> Amazon <br> <span style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave </span> </h1>
-        </div>
-
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical uk-width-1">
-            
-            <li class="uk-active uk-text-center">
-                <h3 class=" uk-width-1 uk-text-center uk-margin-large-bottom"
-                    style="color: white; height: 50px; padding: 0;"> Available books </h3>
-            </li>
-
-            {% for book in books %}
-            <li class="uk-active uk-text-center Btn">
-                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom uk-text-truncate"
-                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> {{book.name}} </button>
-            </li>
-            {% endfor %}
-
-
-            
-            <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center Btn" style="width: 15%; position: fixed; bottom: 3%; left: 0; z-index: 1000; border: none">
-                <button class="uk-button uk-button-default uk-border-rounded"
-                style="background:  #969696; border: solid #969696 2px; color: white; width: 80%; height: 45px; padding: 0;" > settings </button>
+    <ul class="uk-slider-items uk-grid">
+       <li class="uk-width-4-5">
+            <div class="uk-panel">
+                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
+                <div class="uk-position-center uk-text-center">
+                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
+                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
+                </div>
             </div>
-        </ul>
-    </div>
+        </li>
 
-    <div id="MainWindowContainer" style="width: 85%; margin-left: 15%">
-    </div>
+        <li class="uk-width-4-5">
+            <div class="uk-panel">
+                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
+                <div class="uk-position-center uk-text-center">
+                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
+                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </li>
 
+        <li class="uk-width-4-5">
+            <div class="uk-panel">
+                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
+                <div class="uk-position-center uk-text-center">
+                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
+                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </li>
+
+        <li class="uk-width-4-5">
+            <div class="uk-panel">
+                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
+                <div class="uk-position-center uk-text-center">
+                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
+                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+</div>
+
+    </div>
 
 </body>
 
