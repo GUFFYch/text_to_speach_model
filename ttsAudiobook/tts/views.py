@@ -6,30 +6,35 @@ from datetime import datetime, date
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 
+# get user current ip address
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
 def Mainpage(request):
     content = {}
+    content['books'] = Book.objects.all()
+    user_ip = get_client_ip(request)
     texts = Text.objects.all()
-    # for text in texts:
-        # if 
-    print(request.headers['Cookie'].replace('csrftoken=', ''))
+    user_existence = False
+    for text in texts:
+        if user_ip in text.user:
+            user_existence = True
+    if not(user_existence):
+        Text.objects.create(user = user_ip)    
+    
     return render(request, 'main.html', content)
 
-def Books(request, pos):
-    folder_path = 'books'
-    files = os.listdir(folder_path)
-
-    files.sort()
-
-    try:
-        pos = int(pos)
-    except ValueError:
-        pos = 0
-
-    pos = max(0, min(pos, len(files) - 1))
-    selected_file = files[pos]
-    file_path = os.path.join(folder_path, selected_file)
-    print(file_path)
-    return render(request, f'books/{file_path}.html', content)
+def Books(request, name):
+    content = {}
+    content['book'] = Book.objects.get(name = name.replace("%0%", " "))
+    
+    return render(request, 'audiobooks.html', content)
 
 def Settings(request):
     content = {}

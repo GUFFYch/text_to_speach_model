@@ -7,3 +7,7 @@ class Text(models.Model):
     speed = models.FloatField(default=1.0)
     color = models.CharField(max_length=6, default="FFFFFF")
 
+class Book(models.Model):
+    name = models.CharField(max_length=200)
+    length = models.IntegerField()
+    text = models.TextField()

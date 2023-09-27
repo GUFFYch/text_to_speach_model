@@ -27,20 +27,13 @@
                     style="color: white; height: 50px; padding: 0;"> Available books </h3>
             </li>
 
+            {% for book in books %}
             <li class="uk-active uk-text-center Btn">
-                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
-                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
+                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom uk-text-truncate"
+                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> {{book.name}} </button>
             </li>
+            {% endfor %}
 
-            <li class="uk-active uk-text-center Btn">
-                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
-                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
-            </li>
-
-            <li class="uk-active uk-text-center Btn">
-                <button class="uk-button uk-button-default uk-border-rounded uk-margin-bottom"
-                    style="background:  #646464; border: solid #646464 2px; color: white; width: 90%; height: 50px; padding: 0;"> Book name </button>
-            </li>
 
             
             <div class="uk-flex uk-flex-middle uk-flex-center uk-text-center Btn" style="width: 15%; position: fixed; bottom: 3%; left: 0; z-index: 1000; border: none">
@@ -56,21 +49,19 @@
 
 </body>
 
-
-
 <script>
 
     $(document).ready(function() {
         $('.Btn').on('click', function() {
             console.log();
             var xhr = new XMLHttpRequest();
-            var name = $(this).find('button').text().trim().replace(/ /g, '-');;
+            var name = $(this).find('button').text().trim().replace(/ /g, '%0%');
             localStorage.book = name;
 
             if (name !== 'settings') {
-                xhr.open('GET', `/books/${name}/`);
+                xhr.open('GET', `/books/${name}`);
             } else {
-                xhr.open('GET', '/settings/');
+                xhr.open('GET', '/settings');
             }
 
             xhr.onload = function () {
