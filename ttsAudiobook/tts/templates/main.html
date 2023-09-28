@@ -1,80 +1,133 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/css/uikit.min.css"/>
-    <title>Text to Speech</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/uikit@3.15.24/dist/css/uikit.min.css" />
+        <title>Text to Speech</title>
+        <script src="https://kit.fontawesome.com/6fc980010f.js"
+            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
 
+    <style>
+        .music-button{
+            margin-top: 15px;
+            color: white; 
+            background-color: rgba(35,35,35,.7); 
+            scale: 2; 
+            padding: 0;
+        }
 
+        .hidden{
+            display: none;
+        }
+    </style>
 
+    <body style="pointer-events: auto;">
 
-<body style="pointer-events: auto;">
-    
-    <div class="uk-flex uk-flex-right uk-flex-middle">
-        <button>icon</button>
-        <button>settings</button>
-    </div>
-    
-    <div class="uk-width-4-5" style="margin: 50px auto">
-        <h1 class="uk-text-center" style="margin: 30px auto;"> Amazon <span style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave </span> </h1> 
-       
-        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; center: true">
+        <div class="uk-flex uk-flex-right uk-flex-middle">
+            <button>icon</button>
+            <button>settings</button>
+        </div>
 
-    <ul class="uk-slider-items uk-grid">
-       <li class="uk-width-4-5">
-            <div class="uk-panel">
-                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
-                <div class="uk-position-center uk-text-center">
-                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
-                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
-                </div>
+        <div class="uk-width-4-5" style="margin: 50px auto">
+            <h1 class="uk-text-center" style="margin: 30px auto;"> Amazon <span
+                    style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave
+                </span> </h1>
+
+            <div class="uk-position-relative uk-visible-toggle uk-light"
+                style="margin-top: 200px" tabindex="-1"
+                uk-slider="clsActivated: uk-transition-active; center: true">
+
+                <ul class="uk-slider-items uk-grid">
+
+                    <li class="uk-width-1-2@m uk-width-3-5@l">
+                        <div class="uk-panel">
+                            <img
+                                src="https://img.freepik.com/free-vector/black-white-memphis-patterned-background_53876-114475.jpg?w=1380&t=st=1695881651~exp=1695882251~hmac=a0dc046e8d0ecb577c3a9985fcfb6ca715d5e9afdf732fe7680a67c3ffac7fad"
+                                width="1200"
+                                height="900" alt>
+                            <div
+                                class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                                <h2 style="margin-bottom: 0">The Lord of the
+                                    Rings</h2>
+                                <p class="uk-text-muted uk-text-small"
+                                    style="margin: 0;">
+                                    firs 10.000 symbols</p>
+                                    
+                                <div style="margin: 0 0 10px 0">
+                                    <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
+                                </div>
+                                <button
+                                    class="uk-button uk-border-circle uk-width-auto play-button music-button"
+                                    onclick="playAudio()" >
+                                    <i style="margin: 0"
+                                        class="fa-regular fa-circle-play fa-xl"></i>
+                                </button>
+
+                                <button
+                                    class="uk-button uk-border-circle uk-width-auto pause-button music-button hidden"
+                                    onclick="pauseAudio()" >
+                                    <i class="fa-regular fa-circle-pause fa-xl"></i>
+                                </button>
+
+                                <audio id="audio"
+                                    src="audio/lord-of-the-rings.mp3"></audio>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
             </div>
-        </li>
 
-        <li class="uk-width-4-5">
-            <div class="uk-panel">
-                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
-                <div class="uk-position-center uk-text-center">
-                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
-                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-        </li>
+        </div>
 
-        <li class="uk-width-4-5">
-            <div class="uk-panel">
-                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
-                <div class="uk-position-center uk-text-center">
-                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
-                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-        </li>
+    </body>
 
-        <li class="uk-width-4-5">
-            <div class="uk-panel">
-                <img src="https://deadline.com/wp-content/uploads/2022/08/lord-of-the-rings-feature-image.jpg?w=681&h=383&crop=1" width="1800" height="1200" alt="">
-                <div class="uk-position-center uk-text-center">
-                    <h2 uk-slider-parallax="x: 100,-100">Heading</h2>
-                    <p uk-slider-parallax="x: 200,-200">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-        </li>
-    </ul>
+    <script>
 
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+   // JavaScript functions to play and pause the audio
+    const audio = document.getElementById('audio');
+    const playButton = document.querySelector('.play-button');
+    const pauseButton = document.querySelector('.pause-button');
+    const currentTimeDisplay = document.getElementById('currentTime');
+    const totalDurationDisplay = document.getElementById('totalDuration');
 
-</div>
+    function playAudio() {
+        audio.play();
+        playButton.classList.add('hidden');
+        pauseButton.classList.remove('hidden');
+    }
 
-    </div>
+    function pauseAudio() {
+        audio.pause();
+        pauseButton.classList.add('hidden');
+        playButton.classList.remove('hidden');
+    }
 
-</body>
+    function updateTimeDisplay() {
+        const currentTime = formatTime(audio.currentTime);
+        const totalDuration = formatTime(audio.duration);
+        currentTimeDisplay.textContent = currentTime;
+        totalDurationDisplay.textContent = totalDuration;
+    }
 
-<script>
+    function formatTime(timeInSeconds) {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = Math.floor(timeInSeconds % 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    // Listen for the "timeupdate" event to continuously update the time display
+    audio.addEventListener('timeupdate', updateTimeDisplay);
+
+    function pauseAudio() {
+        audio.pause();
+        pauseButton.classList.add('hidden');
+        playButton.classList.remove('hidden');
+    }
 
     $(document).ready(function() {
         $('.Btn').on('click', function() {
@@ -98,7 +151,9 @@
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit-icons.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/uikit@3.13.7/dist/js/uikit-icons.min.js"></script>
+    <script
+        src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </html>
