@@ -26,57 +26,24 @@
 
     <body style="pointer-events: auto;">
 
-        <div class="uk-flex uk-flex-right uk-flex-middle">
-            <button>icon</button>
-            <button>settings</button>
+        <div class="uk-margin-small-top uk-position-top-right uk-flex uk-flex-around uk-flex-middle" style="width: 100px">
+            <a href="/settings/" uk-icon="icon: user; ratio: 1.5"></a>
+            <a href="/settings/" uk-icon="icon: cog; ratio: 1.5"></a>
         </div>
 
         <div class="uk-width-4-5" style="margin: 50px auto">
-            <h1 class="uk-text-center" style="margin: 30px auto;"> Amazon <span
+            <h1 class="uk-text-center" style="margin: 15px auto;"> Amazon <span
                     style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: orange;">Wave
                 </span> </h1>
 
             <div class="uk-position-relative uk-visible-toggle uk-light"
-                style="margin-top: 200px" tabindex="-1"
+                style="margin-top: 100px" tabindex="-1"
                 uk-slider="clsActivated: uk-transition-active; center: true">
 
                 <ul class="uk-slider-items uk-grid">
 
-                    <li class="uk-width-1-2@m uk-width-3-5@l">
-                        <div class="uk-panel">
-                            <img
-                                src="https://img.freepik.com/free-vector/black-white-memphis-patterned-background_53876-114475.jpg?w=1380&t=st=1695881651~exp=1695882251~hmac=a0dc046e8d0ecb577c3a9985fcfb6ca715d5e9afdf732fe7680a67c3ffac7fad"
-                                width="1200"
-                                height="900" alt>
-                            <div
-                                class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
-                                <h2 style="margin-bottom: 0">The Lord of the
-                                    Rings</h2>
-                                <p class="uk-text-muted uk-text-small"
-                                    style="margin: 0;">
-                                    firs 10.000 symbols</p>
-                                    
-                                <div style="margin: 0 0 10px 0">
-                                    <span id="currentTime">0:00</span> / <span id="totalDuration">0:00</span>
-                                </div>
-                                <button
-                                    class="uk-button uk-border-circle uk-width-auto play-button music-button"
-                                    onclick="playAudio()" >
-                                    <i style="margin: 0"
-                                        class="fa-regular fa-circle-play fa-xl"></i>
-                                </button>
-
-                                <button
-                                    class="uk-button uk-border-circle uk-width-auto pause-button music-button hidden"
-                                    onclick="pauseAudio()" >
-                                    <i class="fa-regular fa-circle-pause fa-xl"></i>
-                                </button>
-
-                                <audio id="audio"
-                                    src="audio/lord-of-the-rings.mp3"></audio>
-                            </div>
-                        </div>
-                    </li>
+                    {% include "audiobooks.html" %}
+                    {% include "audiobooks.html" %}
 
                 </ul>
 
